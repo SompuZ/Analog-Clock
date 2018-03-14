@@ -1,29 +1,17 @@
 package clock;
 
 import java.awt.BasicStroke;
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
-import java.awt.Stroke;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import javax.swing.JProgressBar;
-
 import java.awt.Canvas;
 import java.awt.Color;
-import java.awt.Window.Type;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
-
 import javax.swing.JLabel;
-
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 
 import javax.swing.SwingConstants;
 
