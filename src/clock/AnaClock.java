@@ -1,3 +1,23 @@
+ /*
+	Simple Analog Clock
+ 
+	Author: Anupam Roy <anupam.roy.125@gmail.com>
+    Copyright (C) 2017  Anupam Roy <anupam.roy.125@gmail.com>
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <https://www.gnu.org/licenses/>.
+*/
+
 package clock;
 
 import java.awt.BasicStroke;
@@ -11,9 +31,12 @@ import java.awt.Canvas;
 import java.awt.Color;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.TimerTask;
+
 import javax.swing.JLabel;
 
 import javax.swing.SwingConstants;
+import java.util.Timer;
 
 import java.awt.Font;
 
@@ -139,13 +162,17 @@ public class AnaClock extends JFrame {
 		init();
 		setVisible(true);
 		
-		while(true){
-			Thread.sleep(1000);
-			repaint();
-		}
+		TimerTask clock=new TimerTask() {
+
+			@Override
+			public void run() {
+				
+				repaint();
+			}
+		};
+		Timer timer = new Timer();
+		timer.scheduleAtFixedRate(clock, 0, 1000);
 	}
-	
-	
 	
 	
 	
@@ -169,19 +196,15 @@ public class AnaClock extends JFrame {
 	}
 	
 	
-	
-	
-	
 	public void paint(Graphics g2){
 		
 		Graphics2D g =(Graphics2D)g2;
 		
 		g.setRenderingHint(RenderingHints.KEY_ANTIALIASING,RenderingHints.VALUE_ANTIALIAS_ON);
 		
-		super.paint(g);
+		super.paintComponents(g);
 		
 		g.translate(getWidth()/2, getHeight()/2);
-			
 		
 		//System.out.println(Math.sin(Math.toRadians(30)));
 		
@@ -196,7 +219,7 @@ public class AnaClock extends JFrame {
 		
 		g.setColor(Color.GREEN);
 		g.drawLine(0, 0, x, y);
-		
+	
 		if(sdf.format(c.getTime()).equals("00")){
 			mt +=6;
 		}
